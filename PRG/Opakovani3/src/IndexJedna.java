@@ -15,10 +15,10 @@ class IndexJedna{
 
 
         for(char ch : map.keySet()){
-            int xd = 0;
+            int j = 0;
             for(int i = 0; i < input.length;i++){
                 if(ch == input[i]){
-                    map.replace(ch, xd += 1);
+                    map.replace(ch, j += 1);
                 }
             }
         }
