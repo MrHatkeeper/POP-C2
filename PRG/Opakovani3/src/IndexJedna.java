@@ -1,40 +1,27 @@
-import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Scanner;
 
-public class IndexJedna {
+class IndexJedna{
     public static void main(String[] args) {
+
         Scanner scan = new Scanner(System.in);
+        char[] input = scan.nextLine().toCharArray();
 
-        System.out.println("Zadej string");
-        String s = scan.nextLine();
+        HashMap<Character, Integer> map = new HashMap<Character, Integer>();
 
-        String[] arr = new String[s.length()];
+        for (char ch = 'a';ch < 'z';ch++){
+            map.put(ch, 0);
+        }
 
-        //udělání si array na poměřování
-        for(int i = 0; i < s.length();i++){
-            String letter = String.valueOf(s.charAt(i));
-            int count = 0;
-            for(int j = 0; j < arr.length;j++){
-                if(letter.equals(arr[j])){
-                    count++;
+
+        for(char ch : map.keySet()){
+            int xd = 0;
+            for(int i = 0; i < input.length;i++){
+                if(ch == input[i]){
+                    map.replace(ch, xd += 1);
                 }
             }
-            if(count == 0){
-                arr[i] = letter;
-            }
         }
-        System.out.println(Arrays.toString(arr));
-
-
-
-        for(int i = 0; i <arr.length; i++){
-            int count = 0;
-            for(int j = 0; j < s.length(); j++ ){
-                if(arr[i].equals(s.charAt(j))){
-                    count++;
-                }
-            }
-            System.out.println(arr[i] + " je zde " + count);
-        }
+        System.out.println(map);
     }
 }
