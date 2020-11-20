@@ -22,118 +22,61 @@ public class Fraction implements IFraction {
 
     @Override
     public IFraction plus(IFraction other) {
-        //a
+
        int num1 = getNumerator();
-       //c
        int num2 = other.getNumerator();
-       //b
        int den1 = getDenominator();
-       //d
        int den2 = other.getDenominator();
 
        int finNum = (num1 * den2) + (den1 * num2);
        int finDen = den1 * den2;
 
-        int count = 0;
-        while (finNum >= finDen){
-            if (finNum >= finDen){
-                finNum -= finDen;
-                count++;
-            }
-        }
-       int hold = finNum;
-       finNum = findLowestCommonMultiple(finNum, finDen) / finDen;
-       finDen = findLowestCommonMultiple(finNum, finDen) / hold;
-
-        return createNormalised(finNum + (count * finDen), finDen);
+       return createNormalised(finNum, finDen);
     }
 
     @Override
     public IFraction minus(IFraction other) {
-        //a
         int num1 = getNumerator();
-        //c
         int num2 = other.getNumerator();
-        //b
         int den1 = getDenominator();
-        //d
         int den2 = other.getDenominator();
 
         int finNum = (num1 * den2) - (den1 * num2);
         int finDen = den1 * den2;
-        int count = 0;
-        while (finNum >= finDen){
-            if (finNum >= finDen){
-                finNum -= finDen;
-                count++;
-            }
-        }
-        int hold = finNum;
-        finNum = findLowestCommonMultiple(finNum, finDen) / finDen;
-        finDen = findLowestCommonMultiple(finNum, finDen) / hold;
 
-        return createNormalised(finNum + (count * finDen), finDen);
+        return createNormalised(finNum, finDen);
     }
 
     @Override
     public IFraction times(IFraction other) {
-        //a
         int num1 = getNumerator();
-        //c
         int num2 = other.getNumerator();
-        //b
         int den1 = getDenominator();
-        //d
         int den2 = other.getDenominator();
 
         int finNum = (num1 * num2);
         int finDen = den1 * den2;
 
-        int count = 0;
-        while (finNum >= finDen){
-            if (finNum >= finDen){
-                finNum -= finDen;
-                count++;
-            }
-        }
-        int hold = finNum;
-        finNum = findLowestCommonMultiple(finNum, finDen) / finDen;
-        finDen = findLowestCommonMultiple(finNum, finDen) / hold;
 
-        return createNormalised(finNum + (count * finDen), finDen);
+        return createNormalised(finNum, finDen);
     }
 
     @Override
     public IFraction dividedBy(IFraction other) {
-        //a
         int num1 = getNumerator();
-        //c
         int num2 = other.getNumerator();
-        //b
         int den1 = getDenominator();
-        //d
         int den2 = other.getDenominator() ;
 
         int finNum = (num1 * den2);
         int finDen = den1 * num2;
 
-        int count = 0;
-        while (finNum >= finDen){
-            if (finNum >= finDen){
-                finNum -= finDen;
-                count++;
-            }
-        }
-        int hold = finNum;
-
-        finNum = (findLowestCommonMultiple(finNum, finDen) / finDen);
-        finDen = findLowestCommonMultiple(finNum, finDen) / hold;
-
-        return createNormalised(finNum + (count * finDen), finDen);
+        return createNormalised(finNum, finDen);
     }
 
     public static Fraction createNormalised(Integer numerator, Integer denominator) {
-        return new Fraction(numerator, denominator);
+        int devide = findGreatestCommonDenominator((denominator),numerator);
+        return new Fraction(numerator / devide, denominator / devide);
     }
 
     /**

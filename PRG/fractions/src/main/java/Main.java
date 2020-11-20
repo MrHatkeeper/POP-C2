@@ -7,6 +7,6 @@ public class Main {
         System.out.println(new Fraction(2, 4).plus(new Fraction(3, 9)));
         System.out.println(new Fraction(2, 4).minus(new Fraction(3, 9)));
         System.out.println(new Fraction(2, 4).times(new Fraction(3, 9)));
-        System.out.println(new Fraction(3, 4).dividedBy(new Fraction(3, 9)));
+         System.out.println(new Fraction(3, 4).dividedBy(new Fraction(3, 9)));
     }
 }
